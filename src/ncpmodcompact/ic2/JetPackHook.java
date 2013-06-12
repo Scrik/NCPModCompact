@@ -3,10 +3,10 @@ package ncpmodcompact.ic2;
 import ncpmodcompact.Config;
 
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
 
 import fr.neatmonster.nocheatplus.checks.CheckType;
 import fr.neatmonster.nocheatplus.checks.access.IViolationInfo;
+import fr.neatmonster.nocheatplus.checks.moving.MovingData;
 import fr.neatmonster.nocheatplus.hooks.NCPHook;
 
 public class JetPackHook implements NCPHook {
@@ -34,13 +34,22 @@ public class JetPackHook implements NCPHook {
 	public boolean onCheckFailure(CheckType arg0, Player player,
 			IViolationInfo vlevel) {
 		System.out.println(player.getName());
+		 if (player.getInventory().getChestplate() != null)
+		 {
 		System.out.println(player.getInventory().getChestplate());
 		System.out.println(player.getInventory().getChestplate().getTypeId());
 		System.out.println(player.getInventory().getChestplate().getDurability());
+		 }
+
 		System.out.println(vlevel.getTotalVl());
-		
-		if (config.jetids.contains(player.getInventory().getChestplate().getTypeId())) {System.out.println("jetpack found"); return true;}
-		// TODO Auto-generated method stub
+
+		if (player.getInventory().getChestplate() != null && config.jetids.contains(player.getInventory().getChestplate().getTypeId())) {
+			System.out.println("jetpack found");
+			MovingData.getData(player).clearFlyData();
+			MovingData.getData(player).survivalFlyVL = vlevel.getTotalVl() - vlevel.getAddedVl();
+			return true;
+		}
+
 		return false;
 	}
 	
