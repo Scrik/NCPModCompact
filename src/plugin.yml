@@ -1,0 +1,12 @@
+name: NCPModCompact
+main: ncpmodcompact.MainLoader
+version: 0.1
+softdepend: [NoCheatPlus]
+author: Shevchik
+load: STARTUP 
+description: >
+             NoCheatPlus mod compactability hooks
+commands:
+  ncpmc:
+    description: ncpmc reload command
+    usage: ncpmc
