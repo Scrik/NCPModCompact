@@ -21,6 +21,9 @@ public class MainLoader extends JavaPlugin {
 	@Override
 	public void onDisable() {
 		NCPHookManager.removeHook(jethook);
+		jethook = null;
+		config = null;
+		commands = null;
 	}
 	
 	
