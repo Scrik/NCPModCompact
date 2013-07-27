@@ -34,7 +34,6 @@ public class JetPackHook implements NCPHook {
 	public boolean onCheckFailure(CheckType arg0, Player player,
 			IViolationInfo vlevel) {
 		if (player.getInventory().getChestplate() != null && config.jetids.contains(player.getInventory().getChestplate().getTypeId())) {
-			System.out.println("jetpack found");
 			MovingData.getData(player).clearFlyData();
 			MovingData.getData(player).survivalFlyVL = vlevel.getTotalVl() - vlevel.getAddedVl();
 			return true;
