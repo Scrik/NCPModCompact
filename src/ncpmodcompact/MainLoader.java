@@ -1,11 +1,10 @@
 package ncpmodcompact;
 
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import fr.neatmonster.nocheatplus.checks.CheckType;
-import fr.neatmonster.nocheatplus.hooks.NCPHook;
 import fr.neatmonster.nocheatplus.hooks.NCPHookManager;
-
 import ncpmodcompact.ic2.JetPackHook;
 
 
@@ -16,16 +15,7 @@ public class MainLoader extends JavaPlugin {
 	
 	Commands commands;
 	
-	NCPHook jethook;
-	
-	@Override
-	public void onDisable() {
-		NCPHookManager.removeHook(jethook);
-		jethook = null;
-		config = null;
-		commands = null;
-	}
-	
+	JetPackHook jethook;
 	
 	@Override
 	public void onEnable() {
@@ -39,6 +29,14 @@ public class MainLoader extends JavaPlugin {
 		jethook = new JetPackHook(config);
 		NCPHookManager.addHook(new CheckType[]{CheckType.MOVING_SURVIVALFLY}, jethook);
 
+	}
+	
+	@Override
+	public void onDisable() {
+		NCPHookManager.removeHook(jethook);
+		jethook = null;
+		config = null;
+		commands = null;
 	}
 	
 }
