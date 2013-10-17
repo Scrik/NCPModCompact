@@ -11,13 +11,13 @@ import org.bukkit.configuration.file.YamlConfiguration;
 public class Config {
 
 	public List<Integer> jetids = new ArrayList<Integer>();
-	
+	public int quantumlegginsid = 30172;
 	
 	public void LoadCFG()
 	{
 		FileConfiguration config = YamlConfiguration.loadConfiguration(new File("plugins/NCPModCompact/config.yml"));
 		jetids =  config.getIntegerList("ic2.jetpack.ids");
-		
+		quantumlegginsid = config.getInt("ic2.quantumleggins.id",quantumlegginsid);
 		saveCFG();
 	}
 	
@@ -25,12 +25,8 @@ public class Config {
 	{
 		FileConfiguration config = new YamlConfiguration();
 		config.set("ic2.jetpack.ids", jetids);
-		try {
-			config.save(new File("plugins/NCPModCompact/config.yml"));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		config.set("ic2.quantumleggins.id",quantumlegginsid);
+		try {config.save(new File("plugins/NCPModCompact/config.yml"));} catch (IOException e) {}
 	}
 	
 }
