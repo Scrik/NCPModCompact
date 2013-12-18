@@ -12,12 +12,14 @@ public class Config {
 
 	public List<Integer> jetids = new ArrayList<Integer>();
 	public int quantumlegginsid = 30172;
+	public boolean fakeplayerignoresncp;
 	
 	public void LoadCFG()
 	{
 		FileConfiguration config = YamlConfiguration.loadConfiguration(new File("plugins/NCPModCompact/config.yml"));
 		jetids =  config.getIntegerList("ic2.jetpack.ids");
 		quantumlegginsid = config.getInt("ic2.quantumleggins.id",quantumlegginsid);
+		fakeplayerignoresncp = config.getBoolean("ignorefakeplayer",fakeplayerignoresncp);
 		saveCFG();
 	}
 	
@@ -26,6 +28,7 @@ public class Config {
 		FileConfiguration config = new YamlConfiguration();
 		config.set("ic2.jetpack.ids", jetids);
 		config.set("ic2.quantumleggins.id",quantumlegginsid);
+		config.set("ignorefakeplayer",fakeplayerignoresncp);
 		try {config.save(new File("plugins/NCPModCompact/config.yml"));} catch (IOException e) {}
 	}
 	
