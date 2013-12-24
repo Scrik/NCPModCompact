@@ -35,6 +35,7 @@ public class QuantumLegginsHook implements NCPHook {
 	{
 		if (player.getInventory().getLeggings() != null && config.quantumlegginsid == player.getInventory().getLeggings().getTypeId()) 
 		{
+			//TODO: add speed check here
 			if (player.isSprinting())
 			{
 				MovingData.getData(player).survivalFlyVL = vlevel.getTotalVl() - vlevel.getAddedVl();
