@@ -33,10 +33,13 @@ public class QuantumLegginsHook implements NCPHook {
 	@Override
 	public boolean onCheckFailure(CheckType check, Player player, IViolationInfo vlevel) 
 	{
-		if (player.isSprinting() && player.getInventory().getLeggings() != null && config.quantumlegginsid == player.getInventory().getLeggings().getTypeId()) 
+		if (player.getInventory().getLeggings() != null && config.quantumlegginsid == player.getInventory().getLeggings().getTypeId()) 
 		{
-			MovingData.getData(player).survivalFlyVL = vlevel.getTotalVl() - vlevel.getAddedVl();
-			return true;
+			if (player.isSprinting())
+			{
+				MovingData.getData(player).survivalFlyVL = vlevel.getTotalVl() - vlevel.getAddedVl();
+				return true;
+			}
 		}
 		return false;
 	}
