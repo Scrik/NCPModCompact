@@ -34,7 +34,7 @@ public class MainLoader extends JavaPlugin {
 		legginshook = new QuantumLegginsHook(config);
 		NCPHookManager.addHook(CheckType.MOVING, legginshook);
 		fakeplayersignorehook = new FakePlayersIgnoreHook(config);
-		NCPHookManager.addHook(new CheckType[]{CheckType.ALL}, fakeplayersignorehook);
+		NCPHookManager.addHook(CheckType.ALL, fakeplayersignorehook);
 	}
 	
 	@Override
