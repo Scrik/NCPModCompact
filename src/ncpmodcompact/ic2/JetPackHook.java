@@ -38,6 +38,7 @@ public class JetPackHook implements NCPHook, Listener {
 		{
 			if (player.getLocation().getY() > MovingData.getData(player).fromY)
 			{
+				MovingData.getData(player).noFallFallDistance = 0;
 				MovingData.getData(player).survivalFlyVL = vlevel.getTotalVl() - vlevel.getAddedVl();
 				return true;
 			}
