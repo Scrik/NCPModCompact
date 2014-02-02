@@ -36,10 +36,11 @@ public class JetPackHook implements NCPHook, Listener {
 	{
 		if (player.getInventory().getChestplate() != null && config.jetids.contains(player.getInventory().getChestplate().getTypeId())) 
 		{
-			MovingData.getData(player).noFallFallDistance = 0;
-			MovingData.getData(player).noFallVL = vlevel.getTotalVl() - vlevel.getAddedVl();
-			MovingData.getData(player).survivalFlyVL = vlevel.getTotalVl() - vlevel.getAddedVl();
-			return true;
+			if (player.getVelocity().getY() > 0)
+			{
+				MovingData.removeData(player.getName());
+				return true;
+			}
 		}
 		return false;
 	}
