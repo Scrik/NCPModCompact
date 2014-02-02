@@ -8,7 +8,7 @@ import org.bukkit.command.RemoteConsoleCommandSender;
 
 public class Commands implements CommandExecutor{
 
-	Config config;
+	private Config config;
 	
 	public Commands(Config config)
 	{
@@ -17,16 +17,16 @@ public class Commands implements CommandExecutor{
 	
 	
 	@Override
-	public boolean onCommand(CommandSender sender, Command command,
-	String commandLabel, String[] args) {
+	public boolean onCommand(CommandSender sender, Command command, String commandLabel, String[] args) 
+	{ 
 		boolean hasperm = false;
-	if (sender instanceof ConsoleCommandSender || sender instanceof RemoteConsoleCommandSender) {hasperm = true;}
-	if (hasperm)
+		if (sender instanceof ConsoleCommandSender || sender instanceof RemoteConsoleCommandSender) {hasperm = true;}
+		if (hasperm)
 		{
 			config.LoadCFG();
 			return true;
 		}
-	return false;
+		return false;
 	}
 	
 }
